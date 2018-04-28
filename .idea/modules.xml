@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../django-crud-example-master/.idea/django-crud-example-master.iml" filepath="$PROJECT_DIR$/../django-crud-example-master/.idea/django-crud-example-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../django_crud-master/.idea/django_crud-master.iml" filepath="$PROJECT_DIR$/../django_crud-master/.idea/django_crud-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/myscrumy.iml" filepath="$PROJECT_DIR$/.idea/myscrumy.iml" />
+    </modules>
+  </component>
+</project>
