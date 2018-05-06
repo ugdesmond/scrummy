@@ -52,10 +52,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'myscrumy.urls'
 
+# TEMPLATE_DIRS = (
+#     BASE_DIR + '/templates/',
+# )
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +71,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'myscrumy.wsgi.application'
 
@@ -124,3 +129,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+LOGIN_REDIRECT_URL = '/index'

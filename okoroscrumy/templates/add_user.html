@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+
+{% if msg is not None %}
+    <p>{{msg }}</p>
+    {% endif %}
+
+<h3>Add a New User</h3>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<form action="{% url 'add_user' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+     Full Name:<br>
+  <input type="text" name="full_name" required>
+  <br>
+  UserName:<br>
+  <input type="text" name="user_name"  required>
+    <br>
+     Email:<br>
+  <input type="text" name="email" required >
+
+    <br>
+     Role:<br>
+  <select required name="role">
+      <option value="">Select Role</option>
+       {%for role in roles %}
+      <option value="{{role.id}}">{{role.description}}</option>
+      {%endfor%}
+
+  </select>
+  <br>
+    <br>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+ {% if scrumy_users %}
+<h4>All Scrumy Users</h4>
+<table width="100%" border="1">
+    <thead>
+    <tr>
+        <th><b>FullName</b></th>
+        <th><b>UserName</b></th>
+        <th><b>Email</b></th>
+         <th><b>Role</b></th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {%for user in scrumy_users %}
+    <tr>
+
+        <td>{{user.full_name}}</td>
+        <td>{{user.user_name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role.description}}</td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+    {%endif%}
+</body>
+</html>

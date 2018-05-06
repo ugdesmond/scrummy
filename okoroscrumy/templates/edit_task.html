@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+
+{% if msg is not None %}
+    <p>{{msg }}</p>
+    {% endif %}
+
+<h3>Add a New Task</h3>
+
+<form action="{% url 'edit_task' task_id%}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+     Task Descritpion:<br>
+  <input type="text" name="description" value="{{task.description}}" required readonly>
+  <br>
+  Status:<br>
+  <input type="text" name="status" value="{{task.status}}"  required>
+    <br>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <br>
+            <button type="submit" class="btn btn-success">Update</button>
+        </div>
+
+    </div>
+</form>
+<br>
+<br>
+
+</body>
+</html>

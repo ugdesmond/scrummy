@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Scrumy::::Okoro ugochukw G.</title>
+</head>
+<body>
+<table width="100%" border="1">
+    <thead>
+    <tr>
+        <th><b>Add User</b></th>
+        <th><b>Name</b></th>
+         <th><b>Add Task</b></th>
+        <th><b>UserName</b></th>
+        <th><b>Weekly Goals</b></th>
+        <th><b>Daily Goals</b></th>
+        <th><b>Verify</b></th>
+        <th><b>Done</b></th>
+    </tr>
+    </thead>
+
+    <tbody >
+     {% if scrumy_goals %}
+    {%for goal in scrumy_goals %}
+    <tr>
+        <td> <a href="{% url 'add_user' %}"> <button>click to add user</button></a></td>
+        <td><a href="{% url 'add_task' %}"><button>click to add task</button></a></td>
+        <td>{{goal.user_id.full_name}}</td>
+        <td>{{goal.user_id.user_name}}</td>
+        <td>{{goal.description}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+    </tr>
+    {%endfor%}
+    {%endif%}
+
+
+    </tbody>
+</table>
+</div>
+</body>
+</html>
